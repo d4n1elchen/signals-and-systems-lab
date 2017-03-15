@@ -1,0 +1,27 @@
+clc; clear;
+
+t = 0.6e-6;
+d = 1e-9;
+V = 1.0;
+R = 1.0;
+L = 100.0e-9;
+C = 1.0e-9;
+time = 0:d:t;
+
+sz = size(time);
+Vc = zeros(sz);
+% res(1) = 0;
+% [Vc, dVc] = rlc_discret(0, 0);
+% res(2) = 0;
+% 
+% for i=3:sz(2)
+%     [Vc, dVc] = rlc_discret(Vc, dVc);
+%     res(i) = Vc;
+% end
+
+for i=3:sz(2)
+    %Vc(i) = (d*d*V+2*L*C*Vc(i-1)-L*C*Vc(i-2)+d*Vc(i-1))/(d*d+L*C+d*R*C);
+    Vc(i) = (d*d)/(L*C) * (1-Vc(i-2)-C*R*(Vc(i-1)-Vc(i-2))/d)+2*Vc(i-1)-Vc(i-2);
+end
+
+plot(time, Vc);
