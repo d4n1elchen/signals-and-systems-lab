@@ -16,9 +16,9 @@ right = zeros(sz(1), 1);
 
 for i=1:4
     n = t(i)*fs;
-    src(:, i) = [zeros(n, 1); src(1:end-n, i)];
-    left = left + src(:, i) * l(i);
-    right = right + src(:, i) * r(i);
+    src(:, i) = [zeros(n, 1); src(1:end-n, i)]; % shift
+    left = left + src(:, i) * l(i);             % left amp
+    right = right + src(:, i) * r(i);           % right amp
 end
 
 audiowrite('mixed.wav',[left right],fs);

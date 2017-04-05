@@ -1,9 +1,0 @@
-function [Vc, Vc_n, dVc] = rlc_discret(Vc_n, Vc_n_1, dVc_n, d)
-    V = 1.0;
-    R = 1.0;
-    L = 100.0e-9;
-    C = 1.0e-9;
-    Vc = d/(L*C) * (d*V-d*Vc_n-d*R*C*(Vc_n_1-Vc_n)) + Vc_n_1 + d*dVc_n;
-    dVc = (Vc-Vc_n_1)/d;
-    Vc_n = Vc_n_1
-end
