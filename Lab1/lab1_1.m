@@ -10,9 +10,9 @@ t = [0, 1, 13, 20];
 l = [0.55, 0.6, 0.3, 0.3];
 r = [0.4, 0.8, 0.5, 0.4];
 
-sz = size(src);
-left = zeros(sz(1), 1);
-right = zeros(sz(1), 1);
+sz = size(src, 1);
+left = zeros(sz, 1);
+right = zeros(sz, 1);
 
 for i=1:4
     n = t(i)*fs;
